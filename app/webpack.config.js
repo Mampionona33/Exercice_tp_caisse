@@ -1,6 +1,7 @@
 path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: { app: ["./src/index.tsx"] },
@@ -26,7 +27,8 @@ module.exports = {
       template: "./src/template/index.html",
     }),
     new MiniCssExtractPlugin({
-      filename: "style.css",
+      filename: "[name].bundle.css",
+      chunkFilename: "[id].css",
     }),
   ],
 
@@ -61,14 +63,16 @@ module.exports = {
       {
         test: /\.(js|jsx|ts|tsx)$/i,
         exclude: /(node_modules|bower_components)/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: ["@babel/preset-react", "@babel/preset-env"],
-            },
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              ["@babel/preset-typescript", { allowNamespaces: true }],
+            ],
           },
-        ],
+        },
       },
     ],
   },

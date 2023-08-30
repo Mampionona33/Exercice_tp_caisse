@@ -1,3 +1,22 @@
 {
-  "presets": ["@babel/preset-react", "@babel/preset-env"]
+  "plugins": [
+    "@babel/syntax-dynamic-import",
+    "@babel/plugin-transform-typescript"
+  ],
+  "exclude":"node_modules/**",
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false
+      }
+    ],
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic" // https://stackoverflow.com/questions/32070303/uncaught-referenceerror-react-is-not-defined
+      }
+    ],
+    "@babel/preset-typescript" // transpile typescript
+  ]
 }
