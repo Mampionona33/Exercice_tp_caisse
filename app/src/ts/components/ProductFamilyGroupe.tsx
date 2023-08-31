@@ -5,9 +5,9 @@ const ProductFamilyGroupe: React.FC = () => {
   const productFamilies: IProductFamilly[] = useContext(ProductFamillyContext);
 
   return (
-    <div>
+    <>
       <div>Liste des familles de produits :</div>
-      <div className="d-flex gap-2">
+      <div className="d-flex gap-2 flex-wrap">
         {productFamilies.map((family) => (
           <button
             key={family.idProdFamilly}
@@ -17,7 +17,7 @@ const ProductFamilyGroupe: React.FC = () => {
           </button>
         ))}
       </div>
-    </div>
+    </>
   );
 }
 

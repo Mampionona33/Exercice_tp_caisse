@@ -43,9 +43,13 @@ const App: React.FC = () => {
 
   return (
     <div className="container-lg d-flex gap-3 h-100 justify-content-center">
-      <div className="col-4 d-flex flex-column">
+      <div className="col-4 d-flex flex-column gap-2">
         <div className="bg-success d-flex justify-content-center" >
           <h2 className="text-white"  >Net à payer: 1000€</h2>
+        </div>
+        <div className="d-flex p-2 flex-column bg-white">
+          <span>Ref: 4528754f</span>
+          <span>designation: bolo</span>
         </div>
         <AddToCart />
         <ProductFamillyContext.Provider value={productFamilies}>

@@ -20,6 +20,69 @@ const Cart:React.FC =()=>{
                     <th>dsffd</th>
                     <th>dsffd</th>
                 </tr>
+                <tr>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                </tr>
+                <tr>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                </tr>
+                <tr>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                </tr>
+                <tr>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                </tr>
+                <tr>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                </tr>
+                <tr>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                </tr>
+                <tr>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                </tr>
+                <tr>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                </tr>
+                <tr>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                    <th>dsffd</th>
+                </tr>
             </tbody>
         </table>
     )
