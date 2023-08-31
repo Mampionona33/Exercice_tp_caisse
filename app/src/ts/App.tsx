@@ -40,10 +40,13 @@ const App: React.FC = () => {
     },
   ];
 
+
   return (
-    <div className="container-lg d-flex gap-3">
+    <div className="container-lg d-flex gap-3 h-100 justify-content-center">
       <div className="col-4 d-flex flex-column">
-        <h2>Net à payer:</h2>
+        <div className="bg-success d-flex justify-content-center" >
+          <h2 className="text-white"  >Net à payer: 1000€</h2>
+        </div>
         <AddToCart />
         <ProductFamillyContext.Provider value={productFamilies}>
           <ProductFamilyGroupe />
