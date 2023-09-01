@@ -1,32 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductFamillyContext, IProductFamilly, ProductListContext, IProduct } from "../App";
-import DataLoader from "../db/DataLoader";
 
 const ProductFamilyGroupe: React.FC = () => {
   const productFamiliesContext = useContext(ProductFamillyContext);
   const productListContext = useContext(ProductListContext);
-  const [buttonId, setButtonId] = useState<number | null>(null);
+  const [selectedFamilyId, setSelectedFamilyId] = useState<number | null>(null);
 
-  const handleClickButton = (ev: React.MouseEvent<HTMLButtonElement>) => {
-    ev.preventDefault();
-    const idProdFamilly = parseInt(ev.currentTarget.id);
-    setButtonId(idProdFamilly);
+  const handleClickButton = (idProdFamilly: number) => {
+    setSelectedFamilyId(idProdFamilly);
   }
 
   useEffect(() => {
-    if (buttonId !== null) {
-      (async () => {
-        try {
-          const data = await DataLoader.loadData();
-          productFamiliesContext.setProductFamilies(data.productFamilies);
-          const filteredProducts: IProduct[] = data.products.filter((product: IProduct) => product.familly.idProdFamilly === buttonId);
-          productListContext.setProductList(filteredProducts);
-        } catch (error) {
-          console.error("Erreur lors du chargement des données JSON : ", error);
-        }
-      })();
+    if (selectedFamilyId !== null) {
+      // Filter products based on the selected family ID
+      const filteredProducts: IProduct[] = productListContext.productList.filter((product: IProduct) => product.familly.idProdFamilly === selectedFamilyId);
+      productListContext.setProductList(filteredProducts);
     }
-  }, [buttonId, productFamiliesContext, productListContext]);
+  }, [selectedFamilyId, productListContext]);
 
   return (
     <>
@@ -37,7 +27,7 @@ const ProductFamilyGroupe: React.FC = () => {
             id={family.idProdFamilly.toString()}
             key={family.idProdFamilly}
             className="btn btn-outline-primary"
-            onClick={(e) => handleClickButton(e)}
+            onClick={() => handleClickButton(family.idProdFamilly)} // Pass the family ID
           >
             {family.name}
           </button>

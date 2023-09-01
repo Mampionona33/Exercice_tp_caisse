@@ -1,34 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import { IProduct, ProductListContext, SelectedProdContext } from "../App";
-import DataLoader from "../db/DataLoader";
 
 const ProductList: React.FC = () => {
   const productListContext = useContext(ProductListContext);
   const selectedProdContext = useContext(SelectedProdContext);
-  const [buttonId, setButtonId] = useState<number | null>(null);
+  const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
 
-  const handleButtonClicked = (ev: React.MouseEvent<HTMLButtonElement>) => {
-    ev.preventDefault();
-    const idProd = parseInt(ev.currentTarget.id);
-    setButtonId(idProd);
+  const handleButtonClicked = (productId: number) => {
+    setSelectedProductId(productId);
   };
 
   useEffect(() => {
-    if (buttonId !== null) {
-      DataLoader.loadData()
-        .then((data) => {
-          const selectedProduct: IProduct | undefined = data.products.find(
-            (product : IProduct) => product.ref === buttonId
-          );
-          if (selectedProduct) {
-            selectedProdContext.setSelectedProd(selectedProduct);
-          }
-        })
-        .catch((error) => {
-          console.error("Erreur lors du chargement des données JSON : ", error);
-        });
+    if (selectedProductId !== null) {
+      const selectedProduct: IProduct | undefined = productListContext.productList.find(
+        (product: IProduct) => product.ref === selectedProductId
+      );
+      
+      if (selectedProduct) {
+        selectedProdContext.setSelectedProd(selectedProduct);
+      }
     }
-  }, [buttonId, productListContext]);
+  }, [selectedProductId, productListContext]);
 
   return (
     <>
@@ -37,8 +29,7 @@ const ProductList: React.FC = () => {
         {productListContext.productList.map((product) => (
           <button
             key={product.ref}
-            onClick={(ev) => handleButtonClicked(ev)}
-            id={product.ref.toString()} // Ajoutez l'id du produit
+            onClick={() => handleButtonClicked(product.ref)} // Pass the product ID
             className="btn btn-outline-primary"
           >
             {product.designation}

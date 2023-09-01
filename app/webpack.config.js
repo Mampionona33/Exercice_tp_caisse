@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
+const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
 
 module.exports = {
   entry: { app: ["./src/index.tsx"] },
@@ -35,7 +37,7 @@ module.exports = {
     patterns:[
       {from:"./src/ts/db/data.json",to:"./"}
     ]
-   })
+   }),
   ],
 
   module: {
@@ -44,7 +46,6 @@ module.exports = {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
-
       {
         test: /\.s[ac]ss$/i,
         use: [
@@ -85,5 +86,9 @@ module.exports = {
       name: "vendor",
       chunks: "all",
     },
+    minimize: true,
+    // minimizer: [
+    //   new JsonMinimizerPlugin(),
+    // ],
   },
 };
