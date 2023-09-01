@@ -86,9 +86,5 @@ module.exports = {
       name: "vendor",
       chunks: "all",
     },
-    minimize: true,
-    // minimizer: [
-    //   new JsonMinimizerPlugin(),
-    // ],
   },
 };
