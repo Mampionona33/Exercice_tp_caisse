@@ -4,7 +4,9 @@ import { IProduct, ProductListContext, SelectedProdContext } from "../App";
 const ProductList: React.FC = () => {
   const productListContext = useContext(ProductListContext);
   const selectedProdContext = useContext(SelectedProdContext);
-  const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
+  const [selectedProductId, setSelectedProductId] = useState<number | null>(
+    null
+  );
 
   const handleButtonClicked = (productId: number) => {
     setSelectedProductId(productId);
@@ -12,10 +14,11 @@ const ProductList: React.FC = () => {
 
   useEffect(() => {
     if (selectedProductId !== null) {
-      const selectedProduct: IProduct | undefined = productListContext.productList.find(
-        (product: IProduct) => product.ref === selectedProductId
-      );
-      
+      const selectedProduct: IProduct | undefined =
+        productListContext.productList.find(
+          (product: IProduct) => product.ref === selectedProductId
+        );
+
       if (selectedProduct) {
         selectedProdContext.setSelectedProd(selectedProduct);
       }

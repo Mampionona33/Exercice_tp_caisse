@@ -4,7 +4,7 @@ import Cart from "./components/Cart";
 import ProductFamilyGroupe from "./components/ProductFamilyGroupe";
 import ProductList from "./components/ProductList";
 import DataLoader from "./db/DataLoader";
-import ProductDetails from "./components/ProductDetails"
+import ProductDetails from "./components/ProductDetails";
 
 export interface IProductFamilly {
   idProdFamilly: number;
@@ -35,13 +35,20 @@ export const SelectedProdContext = createContext<{
 
 export const GlobalDataContext = createContext<{
   data: { productFamilies: IProductFamilly[]; products: IProduct[] };
-  setData: React.Dispatch<React.SetStateAction<{ productFamilies: IProductFamilly[]; products: IProduct[] }>>;
+  setData: React.Dispatch<
+    React.SetStateAction<{
+      productFamilies: IProductFamilly[];
+      products: IProduct[];
+    }>
+  >;
 }>({ data: { productFamilies: [], products: [] }, setData: () => {} });
 
 const App: React.FC = () => {
   const [productList, setProductList] = useState<IProduct[]>([]);
   const [productFamilies, setProductFamilies] = useState<IProductFamilly[]>([]);
-  const [selectedProd, setSelectedProd] = useState<IProduct | undefined>(undefined);
+  const [selectedProd, setSelectedProd] = useState<IProduct | undefined>(
+    undefined
+  );
   const [globalData, setGlobalData] = useState<{
     productFamilies: IProductFamilly[];
     products: IProduct[];
@@ -60,10 +67,16 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <GlobalDataContext.Provider value={{ data: globalData, setData: setGlobalData }}>
-    <ProductFamillyContext.Provider value={{ productFamilies, setProductFamilies }}>
-      <ProductListContext.Provider value={{ productList, setProductList }}>
-        <SelectedProdContext.Provider value={{ selectedProd, setSelectedProd }}>
+    <GlobalDataContext.Provider
+      value={{ data: globalData, setData: setGlobalData }}
+    >
+      <ProductFamillyContext.Provider
+        value={{ productFamilies, setProductFamilies }}
+      >
+        <ProductListContext.Provider value={{ productList, setProductList }}>
+          <SelectedProdContext.Provider
+            value={{ selectedProd, setSelectedProd }}
+          >
             <div className="container-lg d-flex gap-3 h-100 justify-content-center">
               <div className="col-4 d-flex flex-column gap-2">
                 <div className="bg-success d-flex justify-content-center">
@@ -78,10 +91,10 @@ const App: React.FC = () => {
                 <Cart />
               </div>
             </div>
-        </SelectedProdContext.Provider>
-      </ProductListContext.Provider>
-    </ProductFamillyContext.Provider>
-  </GlobalDataContext.Provider>
+          </SelectedProdContext.Provider>
+        </ProductListContext.Provider>
+      </ProductFamillyContext.Provider>
+    </GlobalDataContext.Provider>
   );
 };
 

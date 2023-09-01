@@ -1,5 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ProductFamillyContext, IProductFamilly, ProductListContext, IProduct, GlobalDataContext } from "../App";
+import {
+  ProductFamillyContext,
+  IProductFamilly,
+  ProductListContext,
+  IProduct,
+  GlobalDataContext,
+} from "../App";
 import DataLoader from "../db/DataLoader";
 
 const ProductFamilyGroupe: React.FC = () => {
@@ -12,14 +18,15 @@ const ProductFamilyGroupe: React.FC = () => {
     setButtonId(idProdFamilly);
   };
 
-  useEffect(()=>{
-
-    if(buttonId){
-      const filtredProd = globalData.data.products.filter((product:IProduct)=> product.familly.idProdFamilly === buttonId);
+  useEffect(() => {
+    if (buttonId) {
+      const filtredProd = globalData.data.products.filter(
+        (product: IProduct) => product.familly.idProdFamilly === buttonId
+      );
       console.log(filtredProd);
       productListContext.setProductList(filtredProd);
     }
-  },[buttonId])
+  }, [buttonId]);
 
   return (
     <>
@@ -38,6 +45,6 @@ const ProductFamilyGroupe: React.FC = () => {
       </div>
     </>
   );
-}
+};
 
 export default ProductFamilyGroupe;
