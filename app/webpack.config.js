@@ -33,11 +33,9 @@ module.exports = {
       filename: "[name].bundle.css",
       chunkFilename: "[id].css",
     }),
-   new CopyPlugin({
-    patterns:[
-      {from:"./src/ts/db/data.json",to:"./"}
-    ]
-   }),
+    new CopyPlugin({
+      patterns: [{ from: "./src/ts/db/data.json", to: "./" }],
+    }),
   ],
 
   module: {
@@ -54,7 +52,13 @@ module.exports = {
           // Translates CSS into CommonJS
           "css-loader",
           // Compiles Sass to CSS
-          "sass-loader",
+
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
         ],
       },
       {
@@ -86,5 +90,9 @@ module.exports = {
       name: "vendor",
       chunks: "all",
     },
+  },
+  stats: {
+    // remove warning from bootsrap abs error in sass-loader
+    warningsFilter: [/css-loader.*style\.scss/],
   },
 };
