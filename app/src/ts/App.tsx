@@ -47,7 +47,7 @@ const App: React.FC = () => {
       .catch((error) => {
         console.error("Erreur lors du chargement des données JSON : ", error);
       });
-  }, []);
+  }, [productFamilies,productList]);
 
   return (
     <ProductFamillyContext.Provider value={{ productFamilies, setProductFamilies }}>
