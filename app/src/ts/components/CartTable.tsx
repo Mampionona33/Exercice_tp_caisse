@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cart: React.FC = () => {
+const CartTable: React.FC = () => {
   return (
     <table className="table ">
       <thead className="table-dark">
@@ -32,7 +32,7 @@ const Cart: React.FC = () => {
           <th>dsffd</th>
           <th>dsffd</th>
           <th>dsffd</th>
-          <th>dsffd</th>
+          <th>dfsfdf</th>
         </tr>
         <tr>
           <th>dsffd</th>
@@ -88,4 +88,4 @@ const Cart: React.FC = () => {
   );
 };
 
-export default Cart;
+export default CartTable;
