@@ -33,43 +33,55 @@ export const SelectedProdContext = createContext<{
   setSelectedProd: React.Dispatch<React.SetStateAction<IProduct | undefined>>;
 }>({ selectedProd: undefined, setSelectedProd: () => {} });
 
+export const GlobalDataContext = createContext<{
+  data: { productFamilies: IProductFamilly[]; products: IProduct[] };
+  setData: React.Dispatch<React.SetStateAction<{ productFamilies: IProductFamilly[]; products: IProduct[] }>>;
+}>({ data: { productFamilies: [], products: [] }, setData: () => {} });
+
 const App: React.FC = () => {
   const [productList, setProductList] = useState<IProduct[]>([]);
   const [productFamilies, setProductFamilies] = useState<IProductFamilly[]>([]);
   const [selectedProd, setSelectedProd] = useState<IProduct | undefined>(undefined);
+  const [globalData, setGlobalData] = useState<{
+    productFamilies: IProductFamilly[];
+    products: IProduct[];
+  }>({ productFamilies: [], products: [] });
 
   useEffect(() => {
     DataLoader.loadData()
       .then((data) => {
-        setProductFamilies(data.productFamilies);
+        setGlobalData(data);
+        setProductFamilies((prev) => data.productFamilies);
         setProductList(data.products);
       })
       .catch((error) => {
         console.error("Erreur lors du chargement des données JSON : ", error);
       });
-  }, [productFamilies,productList]);
+  }, []);
 
   return (
+    <GlobalDataContext.Provider value={{ data: globalData, setData: setGlobalData }}>
     <ProductFamillyContext.Provider value={{ productFamilies, setProductFamilies }}>
       <ProductListContext.Provider value={{ productList, setProductList }}>
         <SelectedProdContext.Provider value={{ selectedProd, setSelectedProd }}>
-          <div className="container-lg d-flex gap-3 h-100 justify-content-center">
-            <div className="col-4 d-flex flex-column gap-2">
-              <div className="bg-success d-flex justify-content-center">
-                <h2 className="text-white">Net à payer : 1000€</h2>
+            <div className="container-lg d-flex gap-3 h-100 justify-content-center">
+              <div className="col-4 d-flex flex-column gap-2">
+                <div className="bg-success d-flex justify-content-center">
+                  <h2 className="text-white">Net à payer : 1000€</h2>
+                </div>
+                <ProductDetails />
+                <AddToCart />
+                <ProductFamilyGroupe />
+                <ProductList />
               </div>
-              <ProductDetails />
-              <AddToCart />
-              <ProductFamilyGroupe />
-              <ProductList />
+              <div className="col-8">
+                <Cart />
+              </div>
             </div>
-            <div className="col-8">
-              <Cart />
-            </div>
-          </div>
         </SelectedProdContext.Provider>
       </ProductListContext.Provider>
     </ProductFamillyContext.Provider>
+  </GlobalDataContext.Provider>
   );
 };
 

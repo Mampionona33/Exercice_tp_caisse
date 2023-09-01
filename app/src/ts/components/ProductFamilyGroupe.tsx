@@ -1,22 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ProductFamillyContext, IProductFamilly, ProductListContext, IProduct } from "../App";
+import { ProductFamillyContext, IProductFamilly, ProductListContext, IProduct, GlobalDataContext } from "../App";
+import DataLoader from "../db/DataLoader";
 
 const ProductFamilyGroupe: React.FC = () => {
   const productFamiliesContext = useContext(ProductFamillyContext);
   const productListContext = useContext(ProductListContext);
-  const [selectedFamilyId, setSelectedFamilyId] = useState<number | null>(null);
+  const globalData = useContext(GlobalDataContext);
+  const [buttonId, setButtonId] = useState<number | null>(null);
 
   const handleClickButton = (idProdFamilly: number) => {
-    setSelectedFamilyId(idProdFamilly);
-  }
+    setButtonId(idProdFamilly);
+  };
 
-  useEffect(() => {
-    if (selectedFamilyId !== null) {
-      // Filter products based on the selected family ID
-      const filteredProducts: IProduct[] = productListContext.productList.filter((product: IProduct) => product.familly.idProdFamilly === selectedFamilyId);
-      productListContext.setProductList(filteredProducts);
+  useEffect(()=>{
+
+    if(buttonId){
+      const filtredProd = globalData.data.products.filter((product:IProduct)=> product.familly.idProdFamilly === buttonId);
+      console.log(filtredProd);
+      productListContext.setProductList(filtredProd);
     }
-  }, [selectedFamilyId, productListContext]);
+  },[buttonId])
 
   return (
     <>
@@ -27,7 +30,7 @@ const ProductFamilyGroupe: React.FC = () => {
             id={family.idProdFamilly.toString()}
             key={family.idProdFamilly}
             className="btn btn-outline-primary"
-            onClick={() => handleClickButton(family.idProdFamilly)} // Pass the family ID
+            onClick={() => handleClickButton(family.idProdFamilly)}
           >
             {family.name}
           </button>

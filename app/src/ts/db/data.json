@@ -1,45 +1,36 @@
 {
     "productFamilies": [
-    { "idProdFamilly": 0, "name": "biscuit" },
-    { "idProdFamilly": 1, "name": "savon" },
-    { "idProdFamilly": 2, "name": "déodorant" },
-    { "idProdFamilly": 3, "name": "huile" }
+      { "idProdFamilly": 1, "name": "savon" },
+      { "idProdFamilly": 2, "name": "déodorant" },
+      { "idProdFamilly": 3, "name": "huile" },
+      { "idProdFamilly": 4, "name": "biscuit" }
   ],
   "products": [
      {
-      "ref": 0,
+      "ref": 1,
       "familly": {
-        "idProdFamilly": 0,
+        "idProdFamilly": 4,
         "name": "biscuit"
       },
       "designation": "Bolo",
       "price": 200
     },
     {
-      "ref": 1,
+      "ref": 2,
       "familly": {
-        "idProdFamilly": 0,
+        "idProdFamilly": 4,
         "name": "biscuit"
       },
       "designation": "Biscuit familly",
       "price": 200
     },
     {
-      "ref": 2,
+      "ref": 3,
       "familly": {
-        "idProdFamilly": 0,
+        "idProdFamilly": 4,
         "name": "biscuit"
       },
       "designation": "POTATA",
-      "price": 200
-    },
-    {
-      "ref": 3,
-      "familly": {
-        "idProdFamilly": 1,
-        "name": "savon"
-      },
-      "designation": "Nosy",
       "price": 200
     },
     {
@@ -48,7 +39,7 @@
         "idProdFamilly": 1,
         "name": "savon"
       },
-      "designation": "Reva",
+      "designation": "Nosy",
       "price": 200
     },
     {
@@ -57,7 +48,7 @@
         "idProdFamilly": 1,
         "name": "savon"
       },
-      "designation": "Vao",
+      "designation": "Reva",
       "price": 200
     },
     {
@@ -66,16 +57,16 @@
         "idProdFamilly": 1,
         "name": "savon"
       },
-      "designation": "Citron plus",
+      "designation": "Vao",
       "price": 200
     },
     {
       "ref": 7,
       "familly": {
-        "idProdFamilly": 2,
-        "name": "déodorant"
+        "idProdFamilly": 1,
+        "name": "savon"
       },
-      "designation": "Narta",
+      "designation": "Citron plus",
       "price": 200
     },
     {
@@ -85,6 +76,15 @@
         "name": "déodorant"
       },
       "designation": "Nivea men",
+      "price": 200
+    },
+    {
+      "ref": 9,
+      "familly": {
+        "idProdFamilly": 2,
+        "name": "déodorant"
+      },
+      "designation": "Narta",
       "price": 200
     }
   ]
