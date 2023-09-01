@@ -5,7 +5,6 @@ import ProductFamilyGroupe from "./components/ProductFamilyGroupe";
 import ProductList from "./components/ProductList";
 import DataLoader from "./db/DataLoader";
 import ProductDetails from "./components/ProductDetails";
-import { ICart } from "./App";
 
 export interface IProductFamilly {
   idProdFamilly: number;
