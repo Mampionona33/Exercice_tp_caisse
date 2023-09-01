@@ -1,0 +1,91 @@
+{
+    "productFamilies": [
+    { "idProdFamilly": 0, "name": "biscuit" },
+    { "idProdFamilly": 1, "name": "savon" },
+    { "idProdFamilly": 2, "name": "déodorant" },
+    { "idProdFamilly": 3, "name": "huile" }
+  ],
+  "products": [
+     {
+      "ref": 0,
+      "familly": {
+        "idProdFamilly": 0,
+        "name": "biscuit"
+      },
+      "designation": "Bolo",
+      "price": 200
+    },
+    {
+      "ref": 1,
+      "familly": {
+        "idProdFamilly": 0,
+        "name": "biscuit"
+      },
+      "designation": "Biscuit familly",
+      "price": 200
+    },
+    {
+      "ref": 2,
+      "familly": {
+        "idProdFamilly": 0,
+        "name": "biscuit"
+      },
+      "designation": "POTATA",
+      "price": 200
+    },
+    {
+      "ref": 3,
+      "familly": {
+        "idProdFamilly": 1,
+        "name": "savon"
+      },
+      "designation": "Nosy",
+      "price": 200
+    },
+    {
+      "ref": 4,
+      "familly": {
+        "idProdFamilly": 1,
+        "name": "savon"
+      },
+      "designation": "Reva",
+      "price": 200
+    },
+    {
+      "ref": 5,
+      "familly": {
+        "idProdFamilly": 1,
+        "name": "savon"
+      },
+      "designation": "Vao",
+      "price": 200
+    },
+    {
+      "ref": 6,
+      "familly": {
+        "idProdFamilly": 1,
+        "name": "savon"
+      },
+      "designation": "Citron plus",
+      "price": 200
+    },
+    {
+      "ref": 7,
+      "familly": {
+        "idProdFamilly": 2,
+        "name": "déodorant"
+      },
+      "designation": "Narta",
+      "price": 200
+    },
+    {
+      "ref": 8,
+      "familly": {
+        "idProdFamilly": 2,
+        "name": "déodorant"
+      },
+      "designation": "Nivea men",
+      "price": 200
+    }
+  ]
+}

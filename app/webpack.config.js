@@ -2,6 +2,7 @@ path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: { app: ["./src/index.tsx"] },
@@ -30,6 +31,11 @@ module.exports = {
       filename: "[name].bundle.css",
       chunkFilename: "[id].css",
     }),
+   new CopyPlugin({
+    patterns:[
+      {from:"./src/ts/db/data.json",to:"./"}
+    ]
+   })
   ],
 
   module: {
@@ -50,7 +56,6 @@ module.exports = {
           "sass-loader",
         ],
       },
-
       {
         test: /\.(png|jpe?g|gif|ico)$/i,
         loader: "file-loader",
@@ -59,7 +64,6 @@ module.exports = {
           publicPath: "public",
         },
       },
-
       {
         test: /\.(js|jsx|ts|tsx)$/i,
         exclude: /(node_modules|bower_components)/,
