@@ -1,15 +1,15 @@
 {
-    "productFamilies": [
-      { "idProdFamilly": 1, "name": "savon" },
-      { "idProdFamilly": 2, "name": "déodorant" },
-      { "idProdFamilly": 3, "name": "huile" },
-      { "idProdFamilly": 4, "name": "biscuit" }
+  "productFamilies": [
+    { "idProdFamily": 1, "name": "savon" },
+    { "idProdFamily": 2, "name": "déodorant" },
+    { "idProdFamily": 3, "name": "huile" },
+    { "idProdFamily": 4, "name": "biscuit" }
   ],
   "products": [
-     {
+    {
       "ref": 1,
       "familly": {
-        "idProdFamilly": 4,
+        "idProdFamily": 4,
         "name": "biscuit"
       },
       "designation": "Bolo",
@@ -18,7 +18,7 @@
     {
       "ref": 2,
       "familly": {
-        "idProdFamilly": 4,
+        "idProdFamily": 4,
         "name": "biscuit"
       },
       "designation": "Biscuit familly",
@@ -27,7 +27,7 @@
     {
       "ref": 3,
       "familly": {
-        "idProdFamilly": 4,
+        "idProdFamily": 4,
         "name": "biscuit"
       },
       "designation": "POTATA",
@@ -36,7 +36,7 @@
     {
       "ref": 4,
       "familly": {
-        "idProdFamilly": 1,
+        "idProdFamily": 1,
         "name": "savon"
       },
       "designation": "Nosy",
@@ -45,7 +45,7 @@
     {
       "ref": 5,
       "familly": {
-        "idProdFamilly": 1,
+        "idProdFamily": 1,
         "name": "savon"
       },
       "designation": "Reva",
@@ -54,7 +54,7 @@
     {
       "ref": 6,
       "familly": {
-        "idProdFamilly": 1,
+        "idProdFamily": 1,
         "name": "savon"
       },
       "designation": "Vao",
@@ -63,7 +63,7 @@
     {
       "ref": 7,
       "familly": {
-        "idProdFamilly": 1,
+        "idProdFamily": 1,
         "name": "savon"
       },
       "designation": "Citron plus",
@@ -72,7 +72,7 @@
     {
       "ref": 8,
       "familly": {
-        "idProdFamilly": 2,
+        "idProdFamily": 2,
         "name": "déodorant"
       },
       "designation": "Nivea men",
@@ -81,7 +81,7 @@
     {
       "ref": 9,
       "familly": {
-        "idProdFamilly": 2,
+        "idProdFamily": 2,
         "name": "déodorant"
       },
       "designation": "Narta",

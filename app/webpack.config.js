@@ -34,7 +34,7 @@ module.exports = {
       chunkFilename: "[id].css",
     }),
     new CopyPlugin({
-      patterns: [{ from: "./src/ts/db/data.json", to: "./" }],
+      patterns: [{ from: "./src/ts/db/data.json", to: "./" }], //Copy data.json to dist
     }),
   ],
 

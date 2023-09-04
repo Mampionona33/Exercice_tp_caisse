@@ -1,19 +1,27 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
+import { useGlobalData } from "../context/GlobalDataContext";
 
 const ProductList: React.FC = () => {
+  const { data } = useGlobalData();
+
+  const handleClickButton = (idProdFamily: number) => {
+    console.log(`Button with ID ${idProdFamily} clicked.`);
+  };
+
   return (
     <>
       <div>Liste des produits</div>
       <div className="d-flex gap-2 flex-wrap">
-        {/* {productListContext.productList.map((product) => (
+        {data?.products.map((product, key) => (
           <button
-            key={product.ref}
-            onClick={() => handleButtonClicked(product.ref)} // Pass the product ID
+            id={"product_".concat(product.ref.toString())}
+            key={key}
+            onClick={() => handleClickButton(product.ref)}
             className="btn btn-outline-primary"
           >
             {product.designation}
           </button>
-        ))} */}
+        ))}
       </div>
     </>
   );

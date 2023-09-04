@@ -7,8 +7,10 @@ class DataLoader {
       }
       const data = await response.json();
       return data;
-    } catch (error) {
-      throw new Error("Erreur lors du chargement des données JSON : " + error.message);
+    } catch (error: any) {
+      throw new Error(
+        "Erreur lors du chargement des données JSON : " + error.message
+      );
     }
   }
 }
