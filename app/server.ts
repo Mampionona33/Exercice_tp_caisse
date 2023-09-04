@@ -1,22 +1,22 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const path = require('path');
-const { createProxyMiddleware } = require('http-proxy-middleware');
-require('dotenv').config();
+const path = require("path");
+const { createProxyMiddleware } = require("http-proxy-middleware");
+require("dotenv").config();
 
 const UI_API_ENDPOINT =
-  process.env.UI_API_ENDPOINT || 'http://localhost:3000/graphql';
+  process.env.UI_API_ENDPOINT || "http://localhost:3000/graphql";
 const env = { UI_API_ENDPOINT };
 
-const apiProxyTarget = process.env.API_PROXY_TARGET || 'http://localhost:3000';
+const apiProxyTarget = process.env.API_PROXY_TARGET || "http://localhost:3000";
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.send(`window.ENV = ${JSON.stringify(env)}`);
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8081;
 
 app.listen(port, () => {
   console.log(`server start on Port ${port}`);
