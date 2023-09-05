@@ -31,7 +31,7 @@
         "name": "biscuit"
       },
       "designation": "POTATA",
-      "price": 200
+      "price": 3000
     },
     {
       "ref": 4,
@@ -40,7 +40,7 @@
         "name": "savon"
       },
       "designation": "Nosy",
-      "price": 200
+      "price": 1000
     },
     {
       "ref": 5,
@@ -49,7 +49,7 @@
         "name": "savon"
       },
       "designation": "Reva",
-      "price": 200
+      "price": 2000
     },
     {
       "ref": 6,
@@ -58,7 +58,7 @@
         "name": "savon"
       },
       "designation": "Vao",
-      "price": 200
+      "price": 800
     },
     {
       "ref": 7,
@@ -67,7 +67,7 @@
         "name": "savon"
       },
       "designation": "Citron plus",
-      "price": 200
+      "price": 6000
     },
     {
       "ref": 8,
@@ -76,7 +76,7 @@
         "name": "déodorant"
       },
       "designation": "Nivea men",
-      "price": 200
+      "price": 20000
     },
     {
       "ref": 9,
@@ -85,7 +85,7 @@
         "name": "déodorant"
       },
       "designation": "Narta",
-      "price": 200
+      "price": 18000
     }
   ]
 }

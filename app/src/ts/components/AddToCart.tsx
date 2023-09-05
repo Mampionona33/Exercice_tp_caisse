@@ -4,7 +4,7 @@ import { IProducCart, useGlobalData } from "../context/GlobalDataContext";
 
 const AddToCart: React.FC = () => {
   const { selectedProd, prodInCart, setProdInCart, setSelectedProd } = useGlobalData();
-  const [quantity, setQuantity] = useState(0); // État local pour stocker la quantité
+  const [quantity, setQuantity] = useState(0); 
 
   const handleAddToCart = () => {
     if (selectedProd) {
@@ -54,16 +54,22 @@ const AddToCart: React.FC = () => {
         </Button>
         <Button
           variant="primary"
-          className="d-flex justify-content-center align-items-center"
+          className="d-flex justify-content-center align-items-center gap-2"
           onClick={handleAddToCart}
         >
           <span className="material-icons-outlined">add_shopping_cart</span>
+          <span className="text-uppercase sm" >
+            Ajouter
+          </span>
         </Button>
         <Button
-          variant="primary"
-          className="d-flex justify-content-center align-items-center"
+          variant="success"
+          className="d-flex justify-content-center align-items-center gap-2"
         >
           <span className="material-icons-outlined">euro</span>
+          <span className="text-uppercase sm" >
+            payer
+          </span>
         </Button>
       </div>
     </div>
