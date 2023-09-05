@@ -2,10 +2,13 @@ import React from "react";
 import { useGlobalData } from "../context/GlobalDataContext";
 
 const ProductList: React.FC = () => {
-  const { data,isProdFiltred,filteredProd} = useGlobalData();
+  const { data,isProdFiltred,filteredProd,setSelectedProd} = useGlobalData();
 
   const handleClickButton = (idProdFamily: number) => {
-    console.log(`Button with ID ${idProdFamily} clicked.`);
+    const selectedProd = data?.products.filter((prod)=>prod.ref === idProdFamily)[0];
+    if(selectedProd){
+      setSelectedProd(selectedProd);
+    }
   };
 
   return (
