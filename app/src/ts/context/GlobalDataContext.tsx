@@ -14,7 +14,7 @@ export interface IProdFamily {
 
 export interface IProduct {
   ref: number;
-  family: IProdFamily;
+  familly: IProdFamily;
   price: number;
   quantity: number;
   designation: string;
@@ -28,6 +28,10 @@ export interface IData {
 interface GlobalDataContextValue {
   data: IData | null;
   setData: React.Dispatch<React.SetStateAction<IData | null>>;
+  filteredProd : IProduct[] | null;
+  isProdFiltred : boolean;
+  setIsProdFiltred :React.Dispatch<React.SetStateAction<boolean>>;
+  setFiltredProd : React.Dispatch<React.SetStateAction<IProduct[] | null>>;
 }
 
 export const GlobalDataContext = createContext<
@@ -42,6 +46,8 @@ const GlobalDataContextProvider: React.FC<GlobalDataContextProviderProps> = ({
   children,
 }) => {
   const [data, setData] = useState<IData | null>(null);
+  const [filteredProd, setFiltredProd] = useState<IProduct[] | null>(null);
+  const [isProdFiltred, setIsProdFiltred] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,7 +62,9 @@ const GlobalDataContextProvider: React.FC<GlobalDataContextProviderProps> = ({
   }, []);
 
   return (
-    <GlobalDataContext.Provider value={{ data, setData }}>
+    <GlobalDataContext.Provider value={{ 
+      data, setData, filteredProd,setFiltredProd,
+    isProdFiltred, setIsProdFiltred }}>
       {children}
     </GlobalDataContext.Provider>
   );

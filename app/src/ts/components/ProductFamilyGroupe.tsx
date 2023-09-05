@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useGlobalData } from "../context/GlobalDataContext";
 
 const ProductFamilyGroupe: React.FC = () => {
-  const { data } = useGlobalData();
+  const { data,setData,setFiltredProd,setIsProdFiltred } = useGlobalData();
   const [buttonId, setButtonId] = useState<number | null>(null);
 
   const handleClickButton = (idProdFamily: number) => {
@@ -13,14 +13,18 @@ const ProductFamilyGroupe: React.FC = () => {
     let mounted: boolean = true;
     if (buttonId) {
       if (mounted) {
-        console.log(buttonId);
+        if(data && data.products ){
+          const filteredProd = data.products.filter((prod)=>prod.familly.idProdFamily ===  buttonId)
+         setFiltredProd(filteredProd);
+         setIsProdFiltred(true);
+        }
       }
     }
 
     return function cleanup() {
       mounted = false;
     };
-  }, [buttonId]);
+  }, [buttonId, setData, data, ]);
 
   return (
     <>
