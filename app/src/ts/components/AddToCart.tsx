@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { IProducCart, useGlobalData } from "../context/GlobalDataContext";
 
 const AddToCart: React.FC = () => {
-  const { selectedProd, prodInCart, setProdInCart } = useGlobalData();
+  const { selectedProd, prodInCart, setProdInCart, setSelectedProd } = useGlobalData();
   const [quantity, setQuantity] = useState(0); // État local pour stocker la quantité
 
   const handleAddToCart = () => {
@@ -25,6 +25,7 @@ const AddToCart: React.FC = () => {
         setProdInCart([...updatedProdInCart, prodToCart]);
 
         setQuantity(0);
+        setSelectedProd(null);
       }
     } else {
       alert("Veuillez sélectionner un produit");
