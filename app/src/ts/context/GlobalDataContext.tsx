@@ -31,9 +31,11 @@ interface GlobalDataContextValue {
   filteredProd : IProduct[] | null;
   isProdFiltred : boolean;
   selectedProd : IProduct | null;
+  prodInCart : IProduct[] | null;
   setIsProdFiltred :React.Dispatch<React.SetStateAction<boolean>>;
   setFiltredProd : React.Dispatch<React.SetStateAction<IProduct[] | null>>;
   setSelectedProd : React.Dispatch<React.SetStateAction<IProduct | null>>;
+  setProdInCart : React.Dispatch<React.SetStateAction<IProduct[] | null>>;
 }
 
 export const GlobalDataContext = createContext<
@@ -50,7 +52,8 @@ const GlobalDataContextProvider: React.FC<GlobalDataContextProviderProps> = ({
   const [data, setData] = useState<IData | null>(null);
   const [filteredProd, setFiltredProd] = useState<IProduct[] | null>(null);
   const [isProdFiltred, setIsProdFiltred] = useState<boolean>(false);
-  const [selectedProd, setSelectedProd] = useState<IProduct | null>(null)
+  const [selectedProd, setSelectedProd] = useState<IProduct | null>(null);
+  const [prodInCart,setProdInCart] = useState<IProduct[] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,7 +71,8 @@ const GlobalDataContextProvider: React.FC<GlobalDataContextProviderProps> = ({
     <GlobalDataContext.Provider value={{ 
       data, setData, filteredProd,setFiltredProd,
       isProdFiltred, setIsProdFiltred,
-      selectedProd, setSelectedProd }}>
+      selectedProd, setSelectedProd ,
+      prodInCart,setProdInCart}}>
         {children}
     </GlobalDataContext.Provider>
   );
