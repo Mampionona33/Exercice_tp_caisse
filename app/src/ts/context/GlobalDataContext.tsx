@@ -25,17 +25,26 @@ export interface IData {
   products: IProduct[];
 }
 
+export interface IProducCart{
+  ref?: number;
+  familly?: IProdFamily;
+  price?: number;
+  quantity?: number;
+  designation?: string;
+  amount ?: number
+}
+
 interface GlobalDataContextValue {
   data: IData | null;
   setData: React.Dispatch<React.SetStateAction<IData | null>>;
   filteredProd : IProduct[] | null;
   isProdFiltred : boolean;
   selectedProd : IProduct | null;
-  prodInCart : IProduct[] | null;
+  prodInCart : IProducCart[] | null;
   setIsProdFiltred :React.Dispatch<React.SetStateAction<boolean>>;
   setFiltredProd : React.Dispatch<React.SetStateAction<IProduct[] | null>>;
   setSelectedProd : React.Dispatch<React.SetStateAction<IProduct | null>>;
-  setProdInCart : React.Dispatch<React.SetStateAction<IProduct[] | null>>;
+  setProdInCart : React.Dispatch<React.SetStateAction<IProducCart[] | null>>;
 }
 
 export const GlobalDataContext = createContext<
@@ -53,7 +62,7 @@ const GlobalDataContextProvider: React.FC<GlobalDataContextProviderProps> = ({
   const [filteredProd, setFiltredProd] = useState<IProduct[] | null>(null);
   const [isProdFiltred, setIsProdFiltred] = useState<boolean>(false);
   const [selectedProd, setSelectedProd] = useState<IProduct | null>(null);
-  const [prodInCart,setProdInCart] = useState<IProduct[] | null>(null);
+  const [prodInCart,setProdInCart] = useState<IProducCart[] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
