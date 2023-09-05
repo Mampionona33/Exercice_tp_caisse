@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { IProducCart, useGlobalData } from "../context/GlobalDataContext";
 
 const AddToCart: React.FC = () => {
-  const { selectedProd, prodInCart, setProdInCart, setSelectedProd } = useGlobalData();
+  const { selectedProd, prodInCart, setProdInCart, setSelectedProd ,setModalOpen,setModalContent} = useGlobalData();
   const [quantity, setQuantity] = useState(0); 
 
   const handleAddToCart = () => {
@@ -31,6 +31,12 @@ const AddToCart: React.FC = () => {
       alert("Veuillez sélectionner un produit");
     }
   };
+
+  const handleClickPay = () => {
+    console.log("test");
+    setModalContent("test");
+    setModalOpen(true);
+  }
 
   return (
     <div className="d-flex flex-column gap-2">
@@ -65,6 +71,7 @@ const AddToCart: React.FC = () => {
         <Button
           variant="success"
           className="d-flex justify-content-center align-items-center gap-2"
+          onClick={handleClickPay}
         >
           <span className="material-icons-outlined">euro</span>
           <span className="text-uppercase sm" >

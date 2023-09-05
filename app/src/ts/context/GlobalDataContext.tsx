@@ -25,26 +25,38 @@ export interface IData {
   products: IProduct[];
 }
 
-export interface IProducCart{
+export interface IProducCart {
   ref?: number;
   familly?: IProdFamily;
   price?: number;
   quantity?: number;
   designation?: string;
-  amount ?: number
+  amount?: number;
+}
+
+export interface IModal {
+  children: React.ReactNode;
+  title: string | null;
+  isOpen: boolean;
 }
 
 interface GlobalDataContextValue {
   data: IData | null;
   setData: React.Dispatch<React.SetStateAction<IData | null>>;
-  filteredProd : IProduct[] | null;
-  isProdFiltred : boolean;
-  selectedProd : IProduct | null;
-  prodInCart : IProducCart[] | null;
-  setIsProdFiltred :React.Dispatch<React.SetStateAction<boolean>>;
-  setFiltredProd : React.Dispatch<React.SetStateAction<IProduct[] | null>>;
-  setSelectedProd : React.Dispatch<React.SetStateAction<IProduct | null>>;
-  setProdInCart : React.Dispatch<React.SetStateAction<IProducCart[] | null>>;
+  filteredProd: IProduct[] | null;
+  isProdFiltred: boolean;
+  selectedProd: IProduct | null;
+  modal: IModal; // Ajout de la propriété modal
+  prodInCart: IProducCart[] | null;
+  setIsProdFiltred: React.Dispatch<React.SetStateAction<boolean>>;
+  setFiltredProd: React.Dispatch<React.SetStateAction<IProduct[] | null>>;
+  setSelectedProd: React.Dispatch<React.SetStateAction<IProduct | null>>;
+  setProdInCart: React.Dispatch<React.SetStateAction<IProducCart[] | null>>;
+  // Ajout des méthodes pour gérer le modal
+  setModalContent: (content: React.ReactNode) => void;
+  setModalTitle: (title: string) => void;
+  setModalOpen: (isOpen: boolean) => void;
+  setModalClose: () => void;
 }
 
 export const GlobalDataContext = createContext<
@@ -62,7 +74,29 @@ const GlobalDataContextProvider: React.FC<GlobalDataContextProviderProps> = ({
   const [filteredProd, setFiltredProd] = useState<IProduct[] | null>(null);
   const [isProdFiltred, setIsProdFiltred] = useState<boolean>(false);
   const [selectedProd, setSelectedProd] = useState<IProduct | null>(null);
-  const [prodInCart,setProdInCart] = useState<IProducCart[] | null>(null);
+  const [prodInCart, setProdInCart] = useState<IProducCart[] | null>(null);
+  const [modal, setModal] = useState<IModal>({
+    children: null,
+    title: null,
+    isOpen: false,
+  });
+
+  // Méthodes pour gérer le modal
+  const setModalContent = (content: React.ReactNode) => {
+    setModal((prevModal) => ({ ...prevModal, children: content }));
+  };
+
+  const setModalTitle = (title: string) => {
+    setModal((prevModal) => ({ ...prevModal, title }));
+  };
+
+  const setModalOpen = (isOpen: boolean) => {
+    setModal((prevModal) => ({ ...prevModal, isOpen }));
+  };
+
+  const setModalClose = () => {
+    setModal((prevModal) => ({ ...prevModal, isOpen: false }));
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,12 +111,26 @@ const GlobalDataContextProvider: React.FC<GlobalDataContextProviderProps> = ({
   }, []);
 
   return (
-    <GlobalDataContext.Provider value={{ 
-      data, setData, filteredProd,setFiltredProd,
-      isProdFiltred, setIsProdFiltred,
-      selectedProd, setSelectedProd ,
-      prodInCart,setProdInCart}}>
-        {children}
+    <GlobalDataContext.Provider
+      value={{
+        data,
+        setData,
+        filteredProd,
+        setFiltredProd,
+        isProdFiltred,
+        setIsProdFiltred,
+        selectedProd,
+        setSelectedProd,
+        prodInCart,
+        setProdInCart,
+        modal,
+        setModalContent,
+        setModalTitle,
+        setModalOpen,
+        setModalClose,
+      }}
+    >
+      {children}
     </GlobalDataContext.Provider>
   );
 };

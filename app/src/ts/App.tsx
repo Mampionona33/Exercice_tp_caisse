@@ -6,6 +6,7 @@ import ProductList from "./components/ProductList";
 import ProductDetails from "./components/ProductDetails";
 import GlobalDataContextProvider from "./context/GlobalDataContext";
 import LabelTotalPrice from "./components/LabelTotalPrice";
+import CustomModal from "./components/CustomModal";
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <div className="col-8">
           <CartTable />
         </div>
+        <CustomModal/>
       </div>
     </GlobalDataContextProvider>
   );
