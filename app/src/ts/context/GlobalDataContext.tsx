@@ -38,6 +38,7 @@ export interface IModal {
   children: React.ReactNode;
   title: string | null;
   isOpen: boolean;
+  submitLabel : string | null;
 }
 
 interface GlobalDataContextValue {
@@ -55,6 +56,7 @@ interface GlobalDataContextValue {
   // Ajout des méthodes pour gérer le modal
   setModalContent: (content: React.ReactNode) => void;
   setModalTitle: (title: string) => void;
+  setModalSubmitLabel: (title: string) => void;
   setModalOpen: (isOpen: boolean) => void;
   setModalClose: () => void;
 }
@@ -79,6 +81,7 @@ const GlobalDataContextProvider: React.FC<GlobalDataContextProviderProps> = ({
     children: null,
     title: null,
     isOpen: false,
+    submitLabel: null,
   });
 
   // Méthodes pour gérer le modal
@@ -88,6 +91,10 @@ const GlobalDataContextProvider: React.FC<GlobalDataContextProviderProps> = ({
 
   const setModalTitle = (title: string) => {
     setModal((prevModal) => ({ ...prevModal, title }));
+  };
+
+  const setModalSubmitLabel = (submitLabel: string) => {
+    setModal((prevModal) => ({ ...prevModal, submitLabel }));
   };
 
   const setModalOpen = (isOpen: boolean) => {
@@ -128,6 +135,7 @@ const GlobalDataContextProvider: React.FC<GlobalDataContextProviderProps> = ({
         setModalTitle,
         setModalOpen,
         setModalClose,
+        setModalSubmitLabel
       }}
     >
       {children}
