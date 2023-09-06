@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { IProducCart, useGlobalData } from "../context/GlobalDataContext";
+import PaymentForm from "./PaymentForm";
 
 const AddToCart: React.FC = () => {
   const { selectedProd, prodInCart, 
     setProdInCart, setSelectedProd ,setModalOpen,
-    setModalContent,setModalTitle,setModalSubmitLabel} = useGlobalData();
+ modal,   setModalContent,setModalTitle,setModalSubmitLabel} = useGlobalData();
   const [quantity, setQuantity] = useState(0); 
 
   const handleAddToCart = () => {
@@ -36,8 +37,8 @@ const AddToCart: React.FC = () => {
 
   const handleClickPay = () => {
     setModalSubmitLabel("clôturer");
-    setModalTitle("payer")
-    setModalContent("test");
+    setModalTitle("payer");
+    setModalContent(<PaymentForm/>);
     setModalOpen(true);
   }
 

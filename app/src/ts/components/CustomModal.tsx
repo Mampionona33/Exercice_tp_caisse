@@ -9,9 +9,6 @@ const CustomModal: React.FC = () => {
     return null; 
   }
 
-  console.log(modal.submitLabel);
-  
-
   return (
     <>
       <BootstrapModal centered show={modal.isOpen} onHide={setModalClose} > 
@@ -22,7 +19,7 @@ const CustomModal: React.FC = () => {
             </h1>
           </BootstrapModal.Title>
         </BootstrapModal.Header>
-        <BootstrapModal.Body>{}</BootstrapModal.Body>
+        <BootstrapModal.Body>{modal.children ? modal.children : null}</BootstrapModal.Body>
         <BootstrapModal.Footer>
           <Button variant="secondary" onClick={setModalClose}  >
             Close
