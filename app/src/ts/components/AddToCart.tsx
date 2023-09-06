@@ -42,6 +42,11 @@ const AddToCart: React.FC = () => {
     setModalOpen(true);
   }
 
+
+  const handleClickDelete = () => {
+    setProdInCart(null);
+  }
+
   return (
     <div className="d-flex flex-column gap-2">
       <Form>
@@ -59,6 +64,7 @@ const AddToCart: React.FC = () => {
         <Button
           variant="danger"
           className="d-flex justify-content-center align-items-center"
+          onClick={handleClickDelete}
         >
           <span className="material-icons-outlined">clear</span>
         </Button>
