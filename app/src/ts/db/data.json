@@ -86,6 +86,15 @@
       },
       "designation": "Narta",
       "price": 18000
+    },
+    {
+      "ref": 10,
+      "familly": {
+        "idProdFamily": 3,
+        "name": "huile"
+      },
+      "designation": "Hina",
+      "price": 12000
     }
   ]
 }
